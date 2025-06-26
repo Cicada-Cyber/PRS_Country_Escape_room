@@ -11,6 +11,7 @@ let gameState = {
 
 // Timer functions
 function startIntro() {
+    console.log("Start intro clicked");
     document.getElementById('start-screen').classList.add('hidden');
     document.getElementById('intro-screen').classList.remove('hidden');
     gameState.currentScreen = 'intro';
@@ -354,6 +355,7 @@ function resetGame() {
 
 // Initialize when page loads
 window.onload = function() {
+    console.log("Window loaded");
     updateSliders();
     setupBenchmarkingInputs();
 
