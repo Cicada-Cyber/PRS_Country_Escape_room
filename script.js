@@ -245,7 +245,7 @@ function checkBenchmarking() {
 
 // Final Challenge functions
 function unlockFinalChallenge() {
-    document.getElementById('final-escape').style.opacity = '1';
+    document.getElementById('final-escape').classList.remove('locked');
     document.getElementById('final-escape').scrollIntoView({ behavior: 'smooth' });
     
     // Update collected codes display
@@ -280,7 +280,7 @@ function checkFinalCode() {
 
 // Utility functions
 function unlockChallenge(challengeNumber) {
-    document.getElementById(`challenge${challengeNumber}`).style.opacity = '1';
+    document.getElementById(`challenge${challengeNumber}`).classList.remove('locked');
     document.getElementById(`challenge${challengeNumber}`).scrollIntoView({ behavior: 'smooth' });
     
     // Update collected codes display
@@ -306,10 +306,11 @@ function resetGame() {
     document.getElementById('success-screen').classList.add('hidden');
     document.getElementById('start-screen').classList.remove('hidden');
     
-    // Reset all challenge states
-    document.querySelectorAll('.room').forEach((room, index) => {
-        if (index > 0) room.style.opacity = '0.5';
-    });
+    // Lock all challenges except first one
+    document.getElementById('challenge2').classList.add('locked');
+    document.getElementById('challenge3').classList.add('locked');
+    document.getElementById('challenge4').classList.add('locked');
+    document.getElementById('final-escape').classList.add('locked');
     
     // Reset form elements
     document.getElementById('european').value = 33;
@@ -349,6 +350,9 @@ window.onload = function() {
     updateSliders();
     setupBenchmarkingInputs();
     
-    // Set initial opacity for challenges
-    document.getElementById('challenge1').style.opacity = '1';
+    // Lock all challenges except first one at start
+    document.getElementById('challenge2').classList.add('locked');
+    document.getElementById('challenge3').classList.add('locked');
+    document.getElementById('challenge4').classList.add('locked');
+    document.getElementById('final-escape').classList.add('locked');
 };

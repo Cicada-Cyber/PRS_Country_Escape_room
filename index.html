@@ -105,29 +105,56 @@
             </div>
 
             <!-- Challenge 2: RFMix -->
-            <div class="room" id="challenge2" style="opacity: 0.5;">
+            <div class="room locked" id="challenge2">
                 <h2>🔬 CHALLENGE 2: RFMIX ANALYZER</h2>
                 <div class="challenge">
                     <h3>LOCAL ANCESTRY ASSIGNMENT CRITICAL ERROR</h3>
-                    <p>The RFMix system needs recalibration. Assign chromosome segments to their correct ancestral populations.</p>
+                    <p>The RFMix system needs recalibration. First select an ancestry type, then click chromosome segments to assign them.</p>
                     
                     <div class="ancestry-options">
-                        <button class="ancestry-btn european" onclick="selectAncestry('european')">European</button>
-                        <button class="ancestry-btn african" onclick="selectAncestry('african')">African</button>
-                        <button class="ancestry-btn asian" onclick="selectAncestry('asian')">Asian</button>
+                        <button class="ancestry-btn european" onclick="selectAncestry('european')">
+                            🧬 European
+                        </button>
+                        <button class="ancestry-btn african" onclick="selectAncestry('african')">
+                            🧬 African
+                        </button>
+                        <button class="ancestry-btn asian" onclick="selectAncestry('asian')">
+                            🧬 Asian
+                        </button>
                     </div>
                     
-                    <p>Selected: <strong id="selected-ancestry">None</strong> | Click segments to assign ancestry (need 6/8 correct)</p>
+                    <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <p><strong>Step 1:</strong> Click an ancestry button above to select it</p>
+                        <p><strong>Step 2:</strong> Click chromosome segments below to assign the selected ancestry</p>
+                        <p><strong>Current Selection:</strong> <span id="selected-ancestry" style="color: #4ecdc4; font-weight: bold;">None Selected</span></p>
+                        <p><strong>Progress:</strong> Need 6 out of 8 segments correct to proceed</p>
+                    </div>
                     
                     <div class="ancestry-segments" id="segments">
-                        <div class="segment unassigned" data-correct="european" onclick="assignSegment(0)">Seg 1</div>
-                        <div class="segment unassigned" data-correct="african" onclick="assignSegment(1)">Seg 2</div>
-                        <div class="segment unassigned" data-correct="asian" onclick="assignSegment(2)">Seg 3</div>
-                        <div class="segment unassigned" data-correct="european" onclick="assignSegment(3)">Seg 4</div>
-                        <div class="segment unassigned" data-correct="african" onclick="assignSegment(4)">Seg 5</div>
-                        <div class="segment unassigned" data-correct="asian" onclick="assignSegment(5)">Seg 6</div>
-                        <div class="segment unassigned" data-correct="european" onclick="assignSegment(6)">Seg 7</div>
-                        <div class="segment unassigned" data-correct="african" onclick="assignSegment(7)">Seg 8</div>
+                        <button class="segment unassigned" data-correct="european" onclick="assignSegment(0)">
+                            Segment 1<br><small>Click to assign</small>
+                        </button>
+                        <button class="segment unassigned" data-correct="african" onclick="assignSegment(1)">
+                            Segment 2<br><small>Click to assign</small>
+                        </button>
+                        <button class="segment unassigned" data-correct="asian" onclick="assignSegment(2)">
+                            Segment 3<br><small>Click to assign</small>
+                        </button>
+                        <button class="segment unassigned" data-correct="european" onclick="assignSegment(3)">
+                            Segment 4<br><small>Click to assign</small>
+                        </button>
+                        <button class="segment unassigned" data-correct="african" onclick="assignSegment(4)">
+                            Segment 5<br><small>Click to assign</small>
+                        </button>
+                        <button class="segment unassigned" data-correct="asian" onclick="assignSegment(5)">
+                            Segment 6<br><small>Click to assign</small>
+                        </button>
+                        <button class="segment unassigned" data-correct="european" onclick="assignSegment(6)">
+                            Segment 7<br><small>Click to assign</small>
+                        </button>
+                        <button class="segment unassigned" data-correct="african" onclick="assignSegment(7)">
+                            Segment 8<br><small>Click to assign</small>
+                        </button>
                     </div>
                     
                     <button class="btn" onclick="checkRFMix()" id="rfmix-btn" disabled>🔓 ANALYZE SEGMENTS</button>
@@ -136,7 +163,7 @@
             </div>
 
             <!-- Challenge 3: Guest Speaker -->
-            <div class="room" id="challenge3" style="opacity: 0.5;">
+            <div class="room locked" id="challenge3">
                 <h2>👨‍🔬 CHALLENGE 3: GUEST EXPERT INTEL</h2>
                 <div class="challenge">
                     <h3>PROF O'REILLY'S ENCRYPTED MESSAGE</h3>
@@ -169,7 +196,7 @@
             </div>
 
             <!-- Challenge 4: Benchmarking -->
-            <div class="room" id="challenge4" style="opacity: 0.5;">
+            <div class="room locked" id="challenge4">
                 <h2>📊 CHALLENGE 4: PRS BENCHMARKING COMMAND CENTER</h2>
                 <div class="challenge">
                     <h3>FRAMEWORK SELECTION CRITICAL</h3>
@@ -210,7 +237,7 @@
             </div>
 
             <!-- Final Escape -->
-            <div class="room" id="final-escape" style="opacity: 0.5;">
+            <div class="room locked" id="final-escape">
                 <h2>🚪 FINAL ESCAPE SEQUENCE</h2>
                 <div class="challenge">
                     <h3>LAB UNLOCK PROTOCOL</h3>

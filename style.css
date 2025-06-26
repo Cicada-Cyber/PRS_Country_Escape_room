@@ -86,15 +86,26 @@ body {
     height: 80px;
     border-radius: 8px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: transform 0.2s;
     font-weight: bold;
+    border: 2px solid transparent;
+    padding: 5px;
+    text-align: center;
 }
 
 .segment:hover {
     transform: scale(1.05);
+    border-color: white;
+}
+
+.segment small {
+    font-size: 10px;
+    opacity: 0.8;
+    margin-top: 5px;
 }
 
 .segment.european { background: #ff6b6b; }
@@ -217,6 +228,12 @@ body {
 
 .hidden {
     display: none;
+}
+
+.locked {
+    opacity: 0.3;
+    pointer-events: none;
+    filter: blur(2px);
 }
 
 .progress-bar {
