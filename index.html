@@ -11,25 +11,36 @@
         <!-- Start Screen -->
         <div id="start-screen" class="">
             <div class="emergency-header">
-                <h1>🚨 EMERGENCY: LAB LOCKDOWN PROTOCOL ACTIVATED 🚨 </h1>
+                <h1>🚨 EMERGENCY: LAB LOCKDOWN PROTOCOL ACTIVATED 🚨</h1>
                 <h2>PRS Genomics Laboratory</h2>
-                <h1>📋 MISSION BRIEFING IN PROGRESS</h1>
             </div>
-
-            <div class="timer" id="intro-timer">0:30</div>
             
             <div class="room">
-                <!-- <h2>⏰ Instructor Introduction Time</h2> -->
-                <!-- <p style="font-size: 18px;">
-                    Use this time for your introduction and explanation of the workshop content.
-                    The challenges will automatically begin when the timer reaches zero.
-                </p> -->                
                 <h2>🧬 SYSTEM BREACH DETECTED</h2>
                 <p style="font-size: 18px; margin: 20px 0;">
                     • Genomics Lab secured under emergency protocols<br>
                     • All data analysis suspended<br>
                     • <strong>YOUR MISSION:</strong> Solve 4 critical genomic puzzles to restore lab access<br>
                     • <strong>TIME LIMIT:</strong> 10 minutes before backup systems activate
+                </p>
+                
+                <button class="btn" onclick="startIntro()">🚀 START ESCAPE SEQUENCE</button>
+            </div>
+        </div>
+
+        <!-- Intro Timer Screen -->
+        <div id="intro-screen" class="hidden">
+            <div class="emergency-header">
+                <h1>📋 MISSION BRIEFING IN PROGRESS</h1>
+            </div>
+            
+            <div class="timer" id="intro-timer">0:30</div>
+            
+            <div class="room">
+                <h2>⏰ Instructor Introduction Time</h2>
+                <p style="font-size: 18px;">
+                    Use this time for your introduction and explanation of the workshop content.
+                    The challenges will automatically begin when the timer reaches zero.
                 </p>
                 
                 <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
@@ -41,25 +52,13 @@
                         <li><strong>📊 PRS Benchmarking</strong> - Choose the optimal framework</li>
                     </ol>
                     <p><strong>Each challenge gives you ONE digit of the 4-digit escape code!</strong></p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="intro-progress"></div>
-                    </div>
                 </div>
                 
-                <button class="btn" onclick="startIntro()">🚀 START ESCAPE SEQUENCE</button>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="intro-progress"></div>
+                </div>
             </div>
         </div>
-
-        <!-- Intro Timer Screen -->
-        <!-- <div id="intro-screen" class="hidden">
-            <div class="emergency-header">
-                
-            </div>
-            
-            <div class="room">
-                
-            </div>
-        </div> -->
 
         <!-- Main Game Screen -->
         <div id="game-screen" class="hidden">
