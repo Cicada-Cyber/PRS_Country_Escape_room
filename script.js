@@ -5,7 +5,7 @@ let gameState = {
     segmentAssignments: new Array(8).fill('unassigned'),
     quizAnswers: [null, null, null],
     introTimer: 30, //30 1 minutes
-    gameTimer: 120, //480 8 minutes
+    gameTimer: 480, //480 8 minutes
     currentScreen: 'start'
 };
 
@@ -208,7 +208,7 @@ function checkQuiz() {
         unlockChallenge(4);
     } else {
         document.getElementById('challenge3-result').innerHTML = 
-            '<div style="background: #e74c3c; padding: 15px; border-radius: 8px; margin: 10px 0;"><strong>❌ INCORRECT</strong> Only ' + correctCount + '/3 correct. Need at least 2/3. Review Prof O\'Reilly\'s key points!</div>';
+            '<div style="background: #e74c3c; padding: 15px; border-radius: 8px; margin: 10px 0;"><strong>❌ INCORRECT</strong> Only ' + correctCount + '/3 correct. Review Prof O\'Reilly\'s key points!</div>';
     }
 }
 
