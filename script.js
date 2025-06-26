@@ -4,7 +4,7 @@ let gameState = {
     selectedAncestry: null,
     segmentAssignments: new Array(8).fill('unassigned'),
     quizAnswers: [null, null, null],
-    introTimer: 20, // 1 minutes
+    introTimer: 30, // 1 minutes
     gameTimer: 480, // 8 minutes
     currentScreen: 'start'
 };
@@ -40,7 +40,14 @@ function startGame() {
     document.getElementById('intro-screen').classList.add('hidden');
     document.getElementById('game-screen').classList.remove('hidden');
     gameState.currentScreen = 'game';
-    
+
+    // Make sure only challenge 1 is unlocked and visible
+    document.getElementById('challenge1').classList.remove('locked');
+    document.getElementById('challenge2').classList.add('locked');
+    document.getElementById('challenge3').classList.add('locked');
+    document.getElementById('challenge4').classList.add('locked');
+    document.getElementById('final-escape').classList.add('locked');
+
     const gameInterval = setInterval(() => {
         gameState.gameTimer--;
         updateGameTimer();
@@ -349,8 +356,14 @@ function resetGame() {
 window.onload = function() {
     updateSliders();
     setupBenchmarkingInputs();
-    
-    // Lock all challenges except first one at start
+
+    // Hide all screens except start
+    document.getElementById('start-screen').classList.remove('hidden');
+    document.getElementById('intro-screen').classList.add('hidden');
+    document.getElementById('game-screen').classList.add('hidden');
+    document.getElementById('success-screen').classList.add('hidden');
+
+    // Lock all challenges
     document.getElementById('challenge2').classList.add('locked');
     document.getElementById('challenge3').classList.add('locked');
     document.getElementById('challenge4').classList.add('locked');
