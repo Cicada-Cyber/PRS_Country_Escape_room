@@ -4,8 +4,8 @@ let gameState = {
     selectedAncestry: null,
     segmentAssignments: new Array(8).fill('unassigned'),
     quizAnswers: [null, null, null],
-    introTimer: 30, // 1 minutes
-    gameTimer: 480, // 8 minutes
+    introTimer: 30, //30 1 minutes
+    gameTimer: 120, //480 8 minutes
     currentScreen: 'start'
 };
 
@@ -201,7 +201,7 @@ function checkQuiz() {
         }
     }
     
-    if (correctCount = 3) {
+    if (correctCount === 3) {
         gameState.codes[2] = '1';
         document.getElementById('challenge3-result').innerHTML = 
             '<div style="background: #27ae60; padding: 15px; border-radius: 8px; margin: 10px 0;"><strong>✅ SUCCESS!</strong> Third digit obtained: <strong>1</strong><br><small>Key Learning: Understanding pathways is crucial for avoiding false associations in PRS analysis!</small></div>';
