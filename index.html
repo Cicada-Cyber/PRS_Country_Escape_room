@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRS Genomics Lab Escape Room</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="start-screen">
+            <div class="emergency-header">
+                <h1>🚨 EMERGENCY: LAB LOCKDOWN PROTOCOL ACTIVATED 🚨</h1>
+                <h2>PRS Genomics Laboratory</h2>
+            </div>
+            
+            <div class="room">
+                <h2>🧬 SYSTEM BREACH DETECTED</h2>
+                <p style="font-size: 18px; margin: 20px 0;">
+                    • Genomics Lab secured under emergency protocols<br>
+                    • All data analysis suspended<br>
+                    • <strong>YOUR MISSION:</strong> Solve 4 critical genomic puzzles to restore lab access<br>
+                    • <strong>TIME LIMIT:</strong> 10 minutes before backup systems activate
+                </p>
+                
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3>🎯 Your Escape Route: 4 Digital Challenges</h3>
+                    <ol style="text-align: left; font-size: 16px; margin: 15px 0;">
+                        <li><strong>🧬 Population Decoder</strong> - Solve the admixture mystery</li>
+                        <li><strong>🔬 RFMix Analyzer</strong> - Crack the ancestry assignment code</li>
+                        <li><strong>👨‍🔬 Guest Expert Intel</strong> - Decode Prof O'Reilly's key message</li>
+                        <li><strong>📊 PRS Benchmarking</strong> - Choose the optimal framework</li>
+                    </ol>
+                    <p><strong>Each challenge gives you ONE digit of the 4-digit escape code!</strong></p>
+                </div>
+                
+                <button class="btn" onclick="startIntro()">🚀 START ESCAPE SEQUENCE</button>
+            </div>
+        </div>
+
+        <!-- Intro Timer Screen -->
+        <div id="intro-screen" class="hidden">
+            <div class="emergency-header">
+                <h1>📋 MISSION BRIEFING IN PROGRESS</h1>
+            </div>
+            
+            <div class="timer" id="intro-timer">2:00</div>
+            
+            <div class="room">
+                <h2>⏰ Instructor Introduction Time</h2>
+                <p style="font-size: 18px;">
+                    Use this time for your introduction and explanation of the workshop content.
+                    The challenges will automatically begin when the timer reaches zero.
+                </p>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill" id="intro-progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Game Screen -->
+        <div id="game-screen" class="hidden">
+            <div class="emergency-header">
+                <h1>🔬 GENOMICS LAB ESCAPE ROOM</h1>
+                <div class="timer" id="game-timer">8:00</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="game-progress"></div>
+                </div>
+            </div>
+
+            <!-- Challenge 1: Admixture -->
+            <div class="room" id="challenge1">
+                <h2>🧬 CHALLENGE 1: POPULATION DECODER</h2>
+                <div class="challenge">
+                    <h3>ADMIXTURE EMERGENCY - Match the Global Ancestry Proportions!</h3>
+                    <p>The lab's population analysis system has been corrupted. Restore the correct global ancestry proportions to unlock the first security code.</p>
+                    
+                    <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <h4>🎯 TARGET PROPORTIONS:</h4>
+                        <p><span style="color: #ff6b6b;">■</span> European: 45% | <span style="color: #4ecdc4;">■</span> African: 35% | <span style="color: #45b7d1;">■</span> Asian: 20%</p>
+                    </div>
+                    
+                    <div class="slider-container">
+                        <label>European Ancestry: <span id="eur-value">33</span>%</label>
+                        <input type="range" class="slider" id="european" min="0" max="100" value="33" style="background: #ff6b6b;">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <label>African Ancestry: <span id="afr-value">33</span>%</label>
+                        <input type="range" class="slider" id="african" min="0" max="100" value="33" style="background: #4ecdc4;">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <label>Asian Ancestry: <span id="asn-value">34</span>%</label>
+                        <input type="range" class="slider" id="asian" min="0" max="100" value="34" style="background: #45b7d1;">
+                    </div>
+                    
+                    <p><strong>Total: <span id="total-percentage">100</span>%</strong></p>
+                    
+                    <button class="btn" onclick="checkAdmixture()" id="admixture-btn">🔓 DECODE SEQUENCE</button>
+                    <div id="challenge1-result"></div>
+                </div>
+            </div>
+
+            <!-- Challenge 2: RFMix -->
+            <div class="room" id="challenge2" style="opacity: 0.5;">
+                <h2>🔬 CHALLENGE 2: RFMIX ANALYZER</h2>
+                <div class="challenge">
+                    <h3>LOCAL ANCESTRY ASSIGNMENT CRITICAL ERROR</h3>
+                    <p>The RFMix system needs recalibration. Assign chromosome segments to their correct ancestral populations.</p>
+                    
+                    <div class="ancestry-options">
+                        <button class="ancestry-btn european" onclick="selectAncestry('european')">European</button>
+                        <button class="ancestry-btn african" onclick="selectAncestry('african')">African</button>
+                        <button class="ancestry-btn asian" onclick="selectAncestry('asian')">Asian</button>
+                    </div>
+                    
+                    <p>Selected: <strong id="selected-ancestry">None</strong> | Click segments to assign ancestry (need 6/8 correct)</p>
+                    
+                    <div class="ancestry-segments" id="segments">
+                        <div class="segment unassigned" data-correct="european" onclick="assignSegment(0)">Seg 1</div>
+                        <div class="segment unassigned" data-correct="african" onclick="assignSegment(1)">Seg 2</div>
+                        <div class="segment unassigned" data-correct="asian" onclick="assignSegment(2)">Seg 3</div>
+                        <div class="segment unassigned" data-correct="european" onclick="assignSegment(3)">Seg 4</div>
+                        <div class="segment unassigned" data-correct="african" onclick="assignSegment(4)">Seg 5</div>
+                        <div class="segment unassigned" data-correct="asian" onclick="assignSegment(5)">Seg 6</div>
+                        <div class="segment unassigned" data-correct="european" onclick="assignSegment(6)">Seg 7</div>
+                        <div class="segment unassigned" data-correct="african" onclick="assignSegment(7)">Seg 8</div>
+                    </div>
+                    
+                    <button class="btn" onclick="checkRFMix()" id="rfmix-btn" disabled>🔓 ANALYZE SEGMENTS</button>
+                    <div id="challenge2-result"></div>
+                </div>
+            </div>
+
+            <!-- Challenge 3: Guest Speaker -->
+            <div class="room" id="challenge3" style="opacity: 0.5;">
+                <h2>👨‍🔬 CHALLENGE 3: GUEST EXPERT INTEL</h2>
+                <div class="challenge">
+                    <h3>PROF O'REILLY'S ENCRYPTED MESSAGE</h3>
+                    <p>Decode the key insights from today's guest lecture on "Using PRS to Find Rare Variants and Pathways"</p>
+                    
+                    <div style="margin: 20px 0;">
+                        <h4>Question 1: What does PRS help identify beyond common variants?</h4>
+                        <div class="quiz-option" onclick="selectQuizOption(0, 0)" id="q1-0">A) Only common variants</div>
+                        <div class="quiz-option" onclick="selectQuizOption(0, 1)" id="q1-1">B) Rare variants and pathways ✓</div>
+                        <div class="quiz-option" onclick="selectQuizOption(0, 2)" id="q1-2">C) Population structure only</div>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <h4>Question 2: What's key to avoiding false associations (like tea and schizophrenia)?</h4>
+                        <div class="quiz-option" onclick="selectQuizOption(1, 0)" id="q2-0">A) Larger sample sizes</div>
+                        <div class="quiz-option" onclick="selectQuizOption(1, 1)" id="q2-1">B) Understanding pathways ✓</div>
+                        <div class="quiz-option" onclick="selectQuizOption(1, 2)" id="q2-2">C) More SNPs</div>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <h4>Question 3: What does PRSet provide?</h4>
+                        <div class="quiz-option" onclick="selectQuizOption(2, 0)" id="q3-0">A) Standard PRS</div>
+                        <div class="quiz-option" onclick="selectQuizOption(2, 1)" id="q3-1">B) Pathway-based PRS analysis ✓</div>
+                        <div class="quiz-option" onclick="selectQuizOption(2, 2)" id="q3-2">C) Population stratification</div>
+                    </div>
+                    
+                    <button class="btn" onclick="checkQuiz()" id="quiz-btn" disabled>🔓 DECRYPT MESSAGE</button>
+                    <div id="challenge3-result"></div>
+                </div>
+            </div>
+
+            <!-- Challenge 4: Benchmarking -->
+            <div class="room" id="challenge4" style="opacity: 0.5;">
+                <h2>📊 CHALLENGE 4: PRS BENCHMARKING COMMAND CENTER</h2>
+                <div class="challenge">
+                    <h3>FRAMEWORK SELECTION CRITICAL</h3>
+                    <p>Choose the optimal ranking for PRS frameworks in cross-population analysis. Rank 1-3 (1=best for portability across populations)</p>
+                    
+                    <div class="framework-ranking">
+                        <div class="framework">
+                            <div>
+                                <strong>BridgePRS</strong><br>
+                                <small>Two-stage Bayesian method for cross-population PRS</small><br>
+                                Portability: <span class="stars">⭐⭐⭐⭐⭐</span> | Speed: <span class="stars">⭐⭐⭐</span>
+                            </div>
+                            <input type="number" class="ranking-input" id="bridge-rank" min="1" max="3" placeholder="Rank">
+                        </div>
+                        
+                        <div class="framework">
+                            <div>
+                                <strong>PRS-CSx</strong><br>
+                                <small>Cross-population polygenic prediction</small><br>
+                                Portability: <span class="stars">⭐⭐⭐⭐</span> | Speed: <span class="stars">⭐⭐⭐⭐</span>
+                            </div>
+                            <input type="number" class="ranking-input" id="csx-rank" min="1" max="3" placeholder="Rank">
+                        </div>
+                        
+                        <div class="framework">
+                            <div>
+                                <strong>Standard PRS</strong><br>
+                                <small>Traditional single-population approach</small><br>
+                                Portability: <span class="stars">⭐⭐</span> | Speed: <span class="stars">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <input type="number" class="ranking-input" id="standard-rank" min="1" max="3" placeholder="Rank">
+                        </div>
+                    </div>
+                    
+                    <button class="btn" onclick="checkBenchmarking()" id="benchmark-btn" disabled>🔓 VALIDATE FRAMEWORK</button>
+                    <div id="challenge4-result"></div>
+                </div>
+            </div>
+
+            <!-- Final Escape -->
+            <div class="room" id="final-escape" style="opacity: 0.5;">
+                <h2>🚪 FINAL ESCAPE SEQUENCE</h2>
+                <div class="challenge">
+                    <h3>LAB UNLOCK PROTOCOL</h3>
+                    <p>Enter your 4-digit escape code to unlock the genomics lab!</p>
+                    
+                    <div class="code-display">
+                        COLLECTED DIGITS: <span id="collected-codes">_ _ _ _</span>
+                    </div>
+                    
+                    <input type="text" class="code-input" id="final-code" maxlength="4" placeholder="CODE" disabled>
+                    <br>
+                    <button class="btn" onclick="checkFinalCode()" id="final-btn" disabled>🔓 UNLOCK LAB</button>
+                    <div id="final-result"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Screen -->
+        <div id="success-screen" class="hidden">
+            <div class="emergency-header success">
+                <h1>🏆 LAB SUCCESSFULLY UNLOCKED! 🏆</h1>
+                <h2>GENOMICS HEROES - MISSION ACCOMPLISHED!</h2>
+            </div>
+            
+            <div class="room success">
+                <h2>🎉 WEEK RECAP ACHIEVED:</h2>
+                <div style="text-align: left; font-size: 18px; margin: 20px 0;">
+                    <p>✅ <strong>Admixture:</strong> Global and local ancestry analysis</p>
+                    <p>✅ <strong>RFMix:</strong> Local ancestry inference for admixed populations</p>
+                    <p>✅ <strong>Guest Lecture:</strong> Using PRS to find rare variants and pathways</p>
+                    <p>✅ <strong>Benchmarking:</strong> Frameworks for cross-population PRS validation</p>
+                </div>
+                
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3>🧬 How It All Connects:</h3>
+                    <p style="text-align: left; margin: 15px 0;">
+                        <strong>Admixture</strong> reveals population structure that affects PRS accuracy →
+                        <strong>RFMix</strong> provides local ancestry needed for admixture-informed PRS →
+                        <strong>Pathway analysis</strong> helps avoid false associations →
+                        <strong>Benchmarking frameworks</strong> ensure PRS work across diverse populations
+                    </p>
+                    <h4 style="color: #4ecdc4;">= Better Precision Medicine for All! 🌍</h4>
+                </div>
+                
+                <button class="btn" onclick="resetGame()">🔄 PLAY AGAIN</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
