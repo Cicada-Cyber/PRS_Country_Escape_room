@@ -45,3 +45,5 @@ Just open `index.html` in your browser - all files will work together automatica
 The game flow remains exactly the same:
 **Start → 2min Intro → 8min Game (4 challenges) → Success Screen**
 
+https://docs.google.com/presentation/d/19gNhipwcmVI8RLS1fSJ7HGigJsrGjrK8cDIKo1gLFys/edit?slide=id.g36ad7da9f2c_0_0#slide=id.g36ad7da9f2c_0_0
+

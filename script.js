@@ -4,7 +4,7 @@ let gameState = {
     selectedAncestry: null,
     segmentAssignments: new Array(8).fill('unassigned'),
     quizAnswers: [null, null, null],
-    introTimer: 120, // 2 minutes
+    introTimer: 20, // 1 minutes
     gameTimer: 480, // 8 minutes
     currentScreen: 'start'
 };
